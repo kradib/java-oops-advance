@@ -1,4 +1,4 @@
-package abstractionbutnotconcretion.generics;
+package generics;
 
 import lombok.Data;
 
