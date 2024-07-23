@@ -13,7 +13,7 @@ public class ExceptionTranslator {
     public static  <T extends Exception> Exception translate(T ex) {
         Class<? extends Exception> translatedClass = translatorMap.getOrDefault(ex.getClass(), NonRetryableException.class);
         try {
-            return translatedClass.getConstructor(String.class).newInstance(ex.getMessage());
+            return translatedClass.getConstructor(String.class, Throwable.class).newInstance(ex.getMessage(), ex);
         } catch (Exception e) {
             // Handle the reflection exception
             e.printStackTrace();
